@@ -85,7 +85,7 @@ export default function App() {
           <div><div style={{ fontWeight: 800, fontSize: 12, letterSpacing: 1, fontFamily: "Georgia,serif" }}>FREE CRYPTO</div><div style={{ color: "#c9a227", fontWeight: 700, fontSize: 10, letterSpacing: 2 }}>ACADEMY</div></div>
         </div>
         <div style={{ display: "flex", gap: 28 }}>
-          {NAV_LINKS.map(l => <a key={l} href="#" style={{ color: "rgba(255,255,255,0.72)", fontSize: 14, fontWeight: 500, letterSpacing: .4 }}>{l}</a>)}
+          {NAV_LINKS.map(l => <a key={l} href="/" style={{ color: "rgba(255,255,255,0.72)", fontSize: 14, fontWeight: 500, letterSpacing: .4 }}>{l}</a>)}
         </div>
         <div style={{ display: "flex", gap: 10 }}>{btn("Subscribe", true)}{btn("Log In", false, true)}</div>
       </nav>
@@ -239,14 +239,14 @@ export default function App() {
               <div>📞 480-271-4776</div>
             </div>
             <div style={{ display: "flex", gap: 10, marginTop: 14 }}>
-              {["in", "𝕏", "f"].map((ic, i) => <a key={i} href="#" style={{ width: 32, height: 32, borderRadius: 7, background: "rgba(255,255,255,.07)", border: "1px solid rgba(255,255,255,.11)", display: "flex", alignItems: "center", justifyContent: "center", color: "rgba(255,255,255,.65)", fontSize: 13, fontWeight: 700 }}>{ic}</a>)}
+              {["in", "𝕏", "f"].map((ic, i) => <a key={i} href="/" style={{ width: 32, height: 32, borderRadius: 7, background: "rgba(255,255,255,.07)", border: "1px solid rgba(255,255,255,.11)", display: "flex", alignItems: "center", justifyContent: "center", color: "rgba(255,255,255,.65)", fontSize: 13, fontWeight: 700 }}>{ic}</a>)}
             </div>
           </div>
           {FOOTER.map(col => (
             <div key={col.h}>
               <h4 style={{ fontWeight: 700, fontSize: 13.5, marginBottom: 14, letterSpacing: .4 }}>{col.h}</h4>
               <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-                {col.links.map(l => <a key={l} href="#" style={{ color: "rgba(255,255,255,.45)", fontSize: 13 }}>{l}</a>)}
+                {col.links.map(l => <a key={l} href="/" style={{ color: "rgba(255,255,255,.45)", fontSize: 13 }}>{l}</a>)}
               </div>
             </div>
           ))}

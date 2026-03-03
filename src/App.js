@@ -1,6 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 
-const NAV_LINKS = ["About", "Projects", "Learn", "Contact"];
+const NAV_LINKS = [
+  { label: "Home", href: "/" },
+  { label: "Projects", href: "/projects" },
+  { label: "Learn", href: "/learn" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" }
+];
 const PROJECTS = [
   { title: "The 3 Chain Experiment", desc: "They are entire ecosystems with users, developers, activity and ongoing evolution. Instead of chasing hundreds of coins, this experiment follows three living networks.", cta: "Learn More", gold: true },
   { title: "Lifetime Crypto Builder", desc: "The experiment is powered by a service called The Lifetime Crypto Builder. This is the system that turns participation into action.", cta: "Subscribe", gold: false },
@@ -12,10 +18,40 @@ const STEPS = [
 ];
 const WHY = ["Builder mindset (not hype)", "Community-first", "Structured systems", "Wallet ownership", "Transparency + roadmap"];
 const FOOTER = [
-  { h: "Company", links: ["About Us", "e-Book"] },
-  { h: "Projects", links: ["The 3 Chain Experiment", "Lifetime Crypto Builder"] },
-  { h: "Support", links: ["FAQ", "Contact Us"] },
-  { h: "Legal & Disclosures", links: ["Terms", "Privacy", "Disclaimer"] },
+  {
+    h: "Company",
+    links: [
+      { label: "About Us", href: "/about" },
+      { label: "e-Book", href: "/ebook" }
+    ]
+  },
+  {
+    h: "Projects",
+    links: [
+      { label: "The 3 Chain Experiment", href: "/projects/3-chain-experiment" },
+      { label: "Lifetime Crypto Builder", href: "/projects/lifetime-crypto-builder" }
+    ]
+  },
+  {
+    h: "Support",
+    links: [
+      { label: "FAQ", href: "/faq" },
+      { label: "Contact Us", href: "/contact" }
+    ]
+  },
+  {
+    h: "Legal & Disclosures",
+    links: [
+      { label: "Terms", href: "/terms" },
+      { label: "Privacy", href: "/privacy" },
+      { label: "Disclaimer", href: "/disclaimer" }
+    ]
+  }
+];
+const SOCIALS = [
+  { label: "LinkedIn", icon: "in", href: "https://linkedin.com/in/yourprofile" },
+  { label: "X", icon: "𝕏", href: "https://x.com/yourhandle" },
+  { label: "Facebook", icon: "f", href: "https://facebook.com/yourpage" }
 ];
 
 function useFade() {
@@ -85,7 +121,20 @@ export default function App() {
           <div><div style={{ fontWeight: 800, fontSize: 12, letterSpacing: 1, fontFamily: "Georgia,serif" }}>FREE CRYPTO</div><div style={{ color: "#c9a227", fontWeight: 700, fontSize: 10, letterSpacing: 2 }}>ACADEMY</div></div>
         </div>
         <div style={{ display: "flex", gap: 28 }}>
-          {NAV_LINKS.map(l => <a key={l} href="/" style={{ color: "rgba(255,255,255,0.72)", fontSize: 14, fontWeight: 500, letterSpacing: .4 }}>{l}</a>)}
+          {NAV_LINKS.map(link => (
+            <a
+              key={link.label}
+              href={link.href}
+              style={{
+                color: "rgba(255,255,255,0.72)",
+                fontSize: 14,
+                fontWeight: 500,
+                letterSpacing: 0.4
+              }}
+            >
+              {link.label}
+            </a>
+          ))}
         </div>
         <div style={{ display: "flex", gap: 10 }}>{btn("Subscribe", true)}{btn("Log In", false, true)}</div>
       </nav>
@@ -239,14 +288,58 @@ export default function App() {
               <div>📞 480-271-4776</div>
             </div>
             <div style={{ display: "flex", gap: 10, marginTop: 14 }}>
-              {["in", "𝕏", "f"].map((ic, i) => <a key={i} href="/" style={{ width: 32, height: 32, borderRadius: 7, background: "rgba(255,255,255,.07)", border: "1px solid rgba(255,255,255,.11)", display: "flex", alignItems: "center", justifyContent: "center", color: "rgba(255,255,255,.65)", fontSize: 13, fontWeight: 700 }}>{ic}</a>)}
+              {SOCIALS.map((s, i) => (
+                <a
+                  key={i}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.label}
+                  style={{
+                    width: 32,
+                    height: 32,
+                    borderRadius: 7,
+                    background: "rgba(255,255,255,.07)",
+                    border: "1px solid rgba(255,255,255,.11)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    color: "rgba(255,255,255,.65)",
+                    fontSize: 13,
+                    fontWeight: 700
+                  }}
+                >
+                  {s.icon}
+                </a>
+              ))}
             </div>
           </div>
           {FOOTER.map(col => (
             <div key={col.h}>
-              <h4 style={{ fontWeight: 700, fontSize: 13.5, marginBottom: 14, letterSpacing: .4 }}>{col.h}</h4>
+              <h4
+                style={{
+                  fontWeight: 700,
+                  fontSize: 13.5,
+                  marginBottom: 14,
+                  letterSpacing: 0.4
+                }}
+              >
+                {col.h}
+              </h4>
+
               <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-                {col.links.map(l => <a key={l} href="/" style={{ color: "rgba(255,255,255,.45)", fontSize: 13 }}>{l}</a>)}
+                {col.links.map(link => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    style={{
+                      color: "rgba(255,255,255,.45)",
+                      fontSize: 13
+                    }}
+                  >
+                    {link.label}
+                  </a>
+                ))}
               </div>
             </div>
           ))}
